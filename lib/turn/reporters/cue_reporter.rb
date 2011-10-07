@@ -27,7 +27,7 @@ module Turn
       #  @file = test.file
       #  io.puts(test.file)
       #end
-      io.print Colorize.blue("    %-69s" % test.name)
+      io.print Colorize.blue("    %-69s" % format_name(test.name))
       $stdout = @stdout
       $stderr = @stderr
       $stdout.rewind

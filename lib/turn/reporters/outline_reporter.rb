@@ -34,13 +34,7 @@ module Turn
       #  io.puts(test.file)
       #end
 
-      name = if @natural
-               " #{test.name.gsub("test_", "").gsub(/_/, " ")}" 
-             else
-               " #{test.name}"
-             end
-
-      io.print "    %-69s" % name
+      io.print "    %-69s" % format_name(test.name)
 
       @stdout.rewind
       @stderr.rewind

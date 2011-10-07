@@ -65,6 +65,13 @@ module Turn
       bt.map{ |line| line.sub(Dir.pwd+'/', '') }
     end
 
+    def format_name(name)
+      if @natural
+        " #{name.gsub("test_", "").gsub(/_/, " ")}" 
+      else
+        " #{name}"
+      end
+    end
   end
 
 end

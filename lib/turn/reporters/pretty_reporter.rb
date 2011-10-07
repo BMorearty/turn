@@ -31,7 +31,7 @@ module Turn
     #
     def start_test(test)
       @test_time = Time.now
-      @test = test
+      @test_name = format_name(test.name)
       #if @file != test.file
       #  @file = test.file
       #  io.puts(test.file)
@@ -46,7 +46,7 @@ module Turn
     #
     def pass(message=nil)
       io.print pad_with_size("#{PASS}")
-      io.print " #{@test}"
+      io.print " #{@test_name}"
       io.print " (%.2fs) " % (Time.now - @test_time)
       if message
         message = Colorize.magenta(message)
@@ -58,7 +58,7 @@ module Turn
     #
     def fail(assertion)
       io.print pad_with_size("#{FAIL}")
-      io.print " #{@test}"
+      io.print " #{@test_name}"
       io.print " (%.2fs) " % (Time.now - @test_time)
 
       #message = assertion.location[0] + "\n" + assertion.message #.gsub("\n","\n")
@@ -85,7 +85,7 @@ module Turn
     #
     def error(exception)
       io.print pad_with_size("#{ERROR}")
-      io.print " #{@test}"
+      io.print " #{@test_name}"
       io.print " (%.2fs) " % (Time.now - @test_time)
 
       #message = exception.to_s.split("\n")[2..-1].join("\n")
