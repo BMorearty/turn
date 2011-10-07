@@ -15,10 +15,16 @@ module Turn
     end
 
     def start_case(kase)
-      io.print "\n#{kase.name}:\n"
+      @case_header = "\n#{kase.name}:\n"
+    end
+
+    def print_case_header
+      io.print @case_header
+      @case_header = nil
     end
 
     def start_test(test)
+      print_case_header
       @test_time = Time.now
       @test_name = format_name(test.name)
     end
@@ -87,9 +93,6 @@ module Turn
     end
 
     def finish_case(kase)
-      if kase.size == 0
-        io.puts pad("(No Tests)")
-      end
     end
 
     def finish_suite(suite)
