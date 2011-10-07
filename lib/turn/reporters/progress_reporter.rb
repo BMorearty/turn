@@ -82,6 +82,8 @@ module Turn
           io.puts
         end
       #end
+
+      io.puts "Options: #{suite.run_options}"
     end
 
   private

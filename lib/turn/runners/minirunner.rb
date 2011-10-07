@@ -42,6 +42,7 @@ module Turn
     def _run_suites suites, type
       @turn_suite = Turn::TestSuite.new(@turn_config.suite_name)
       @turn_suite.size = ::MiniTest::Unit::TestCase.test_suites.size
+      @turn_suite.run_options = help
 
       turn_reporter.start_suite(@turn_suite)
 

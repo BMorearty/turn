@@ -113,6 +113,7 @@ module Turn
       tally = [total, suite.count_assertions]
 
       io.puts bar
+      io.puts "  options: #{suite.run_options}"
       io.puts "  pass: %d,  fail: %d,  error: %d" % [pass, failure, error]
       io.puts "  total: %d tests with %d assertions in #{Time.new - @time} seconds" % tally
       io.puts bar

@@ -77,6 +77,7 @@ module Turn
         tally = Colorize.green(tally)
       end
 
+      io.puts "\nOptions: #{suite.run_options}"
       io.puts tally
     end
 

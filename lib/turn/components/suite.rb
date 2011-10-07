@@ -8,6 +8,7 @@ module Turn
     attr_accessor :name
     attr_accessor :size
     attr_accessor :cases
+    attr_accessor :run_options
 
     # This one can be set manually since it
     # is not calculatable (beyond the case level).
@@ -18,6 +19,7 @@ module Turn
       @name  = name
       @size  = nil
       @cases = []
+      @run_options = ''
 
       #@count_tests      = nil
       #@count_assertions = nil
