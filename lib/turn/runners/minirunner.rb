@@ -22,6 +22,14 @@ module Turn
       @@out = ::StringIO.new
     end
 
+    def process_args args = []
+      if @turn_config.seed
+        args << '--seed' << @turn_config.seed.to_s
+      end
+
+      super
+    end
+
     #
     def turn_reporter
       @turn_config.reporter

@@ -66,6 +66,9 @@ module Turn
     # Use natural language case names.
     attr_accessor :natural
 
+    # Seed for test-order randomization (MiniTest only)
+    attr_accessor :seed
+
     def verbose? ; @verbose ; end
     def live?    ; @live    ; end
     def natural? ; @natural ; end
@@ -90,6 +93,7 @@ module Turn
       @matchcase ||= nil
       @pattern   ||= /.*/
       @natural   ||= false
+      @seed      ||= nil
 
       @files = nil  # reset files just in case
     end
@@ -223,7 +227,7 @@ module Turn
       config.files.each{ |path| require(path) }
     end
 
-    # # Insatance of Runner, selected based on format and runmode.
+    # Instance of Runner, selected based on format and runmode.
     def runner
       @runner ||= (
         case config.framework
