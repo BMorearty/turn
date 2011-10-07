@@ -103,7 +103,6 @@ module Turn
 
       io.puts
       io.puts "Options: #{suite.run_options}"
-      io.puts
       io.puts "Finished in #{'%.6f' % (Time.now - @time)} seconds."
       io.puts
 
