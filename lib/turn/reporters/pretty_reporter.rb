@@ -83,10 +83,19 @@ module Turn
       end
     end
 
-    # TODO: skip support
-    #def skip
-    #  io.puts(pad_with_size("#{SKIP}"))
-    #end
+    def skip(exception)
+      io.print pad_with_size("#{SKIP}")
+      io.print " #{@test_name}"
+      io.print " (%.2fs) " % (Time.now - @test_time)
+
+      message = exception.message
+
+      if message
+        message = Colorize.skip(message)
+        message = message.to_s
+        io.print(message)
+      end
+    end
 
     def finish_test(test)
       io.puts
@@ -99,6 +108,7 @@ module Turn
       total   = suite.count_tests
       failure = suite.count_failures
       error   = suite.count_errors
+      skips   = suite.count_skips
       #pass    = total - failure - error
 
       io.puts
@@ -109,8 +119,8 @@ module Turn
       io.print "%d tests, " % total
       io.print "%d assertions, " % suite.count_assertions
       io.print Colorize.fail( "%d failures" % failure) + ', '
-      io.print Colorize.error("%d errors" % error) #+ ', '
-      #io.puts  Colorize.cyan( "%d skips" % skips ) #TODO
+      io.print Colorize.error("%d errors" % error)     + ', '
+      io.print Colorize.skip( "%d skips" % skips )
       io.puts
     end
 
